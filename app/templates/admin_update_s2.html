@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        UPDATE ADMIN INFO
+    </title>
+</head>
+
+<body>
+    <h1>UPDATE ADMIN INFO</h1>
+    <form action="{{ url_for('admin_update_result' )}}" method="get">
+        <input type="number" value="{{admin.id}}" name="adminId"><br>
+        <input type="text" value="{{admin.admin_id}}" name="admin_id" placeholder="Admin ID"><br>
+        <input type="text" value="{{admin.fullname}}" name="fullname" placeholder="Full Name"><br>
+        <input type="text" value="{{admin.password}}" name="password" placeholder="Pass Word"><br>
+        <input type="text" value="{{admin.phone}}" name="phone" placeholder="Phone"><br>
+        <input type="text" value="{{admin.email}}" name="email" placeholder="Email"><br>
+        <button class="btn btn-primary">Update</button>
+    </form>
+</body>
+
+</html>

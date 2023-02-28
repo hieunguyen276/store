@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin manager
+{% endblock %}
+
+{% block body %}
+    <h1>Supplier manager</h1>
+    <h2> {{message}} </h2>
+    <ul>
+        <li><a href="{{ url_for('add_supplier') }}">Add Supplier</a></li>
+        <li><a href="{{ url_for('supplier_update_s1') }}">Update Supplier</a></li>
+        <li><a href="{{ url_for('supplier_delete') }}">Delete Supplier</a></li>
+        <li><a href="{{ url_for('search_supplier') }}">Search Supplier</a></li>
+        <li><a href="{{ url_for('manager') }}">Back To Admin page</a></li>
+    </ul>
+        <table class="table table-striped">
+            <tr>
+                <th class="th">ID</th>
+                <th class="th">Supplier ID</th>
+                <th class="th">Supplier name</th>
+                <th class="th">Adress</th>
+                <th class="th">Phone</th>
+                <th class="th">Fax</th>
+                <th class="th">Home page</th>           
+            </tr>
+            {% for supplier in supplier %}
+                <tr>
+                <td>{{ supplier.id }} </td>
+                <td>{{ supplier.supplier_id }} </td>
+                <td>{{ supplier.supplier_name }} </td>
+                <td>{{ supplier.adress }} </td>
+                <td>{{ supplier.phone }} </td>
+                <td>{{ supplier.fax }} </td>
+                <td>{{ supplier.home_page }} </td>
+                </tr>
+            {% endfor %}
+            
+        </table>
+{% endblock %}

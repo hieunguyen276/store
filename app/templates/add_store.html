@@ -1,0 +1,78 @@
+<html>
+
+<head>
+	<title>1st leaflet - Leaflet</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
+	</script>
+</head>
+
+<body>
+	<div class="container" id="mapid" style="width: 100%; height: 80%"></div>
+	<form action="{{ url_for('add_storev1') }}" method="post">
+		{{ form.hidden_tag() }}
+		<div class="mb-3">
+			<h2>Thêm Store mới</h2>
+		</div>
+		<p>
+				<label for="id" class="form-label">ID</label>
+				<input type="text" class="form-control" name="id" required>
+				{% for error in form.id.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+        </p>
+		<p>
+				<label for="store_name" class="form-label">Tên Shop</label>
+				<input type="text" class="form-control" name="store_name" required>
+				{% for error in form.store_name.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+        </p>
+		<p>
+				<label for="address" class="form-label">Địa chỉ</label>
+				<input type="text" class="form-control" name="address" required>
+				{% for error in form.address.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+        </p>
+        <p>
+			<label for="image" class="form-label">Hình ảnh</label>
+			<input type="text" class="form-control" name="image" required>
+			{% for error in form.image.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.lat.label }}
+			{{ form.lat }}
+			{% for error in form.lat.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+		<p>
+			{{ form.lng.label }}
+			{{ form.lng }}
+			{% for error in form.lng.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+        </p>
+	<button type="submit" class="btn btn-primary">Thêm mới</button>
+	</form>
+
+	<script>
+		var mymap = L.map('mapid').setView([21.04088704546296, 105.78649520874025], 14);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(mymap);
+		mymap.on('click', function(e) {
+			document.querySelector('#Lat').value = e.latlng.lat;
+			document.querySelector('#lng').value = e.latlng.lng;
+			var shop = L.marker([e.latlng.lat, e.latlng.lng])
+			shop.addTo(mymap)
+		});
+	</script>
+</body>
+
+</html>

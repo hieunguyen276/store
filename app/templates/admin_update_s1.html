@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin manager
+{% endblock %}
+
+{% block body %}
+        <ul>
+            <li><a href="{{ url_for('signUp') }}">Sign Up New Admin</a></li>
+            <li><a href="{{ url_for('admin_update_s1') }}">Update Admin</a></li>
+            <li><a href="{{ url_for('manager') }}">Back To Admin Page</a></li>
+        </ul>
+    <h2>Select to update</h2>
+    {% with messages = get_flashed_messages() %} 
+        <h2> {{messages[0]}} </h2>
+    {% endwith %}
+    <ul>
+        {% for admin in admin %}
+            <li>
+                <a href="{{ url_for('admin_update_s2', admin_id=admin.id) }}">
+                    {{ admin.admin_id }} -- {{ admin.fullname }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

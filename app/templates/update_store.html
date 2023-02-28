@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Map Update
+{% endblock %}
+
+{% block body %}
+    <h1>Map Manager</h1>
+    <h2> {{message}} </h2>
+    <h2>Cập nhật minimart</h2>
+        <form action="{{ url_for('update_storev1') }}" method="post" enctype="multipart/form-data">
+          <select class="form-control" name="id">
+            {% for store in store %}
+              <option value='{{store.id}}'>{{store.id}}-{{store.store_name}}</option>
+             {%endfor%}
+            <input type="submit" class="btn btn-primary" value="update">
+        </form>
+{% endblock %}

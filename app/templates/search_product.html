@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block title %} Store {% endblock %} {% block body %}
+<h1>Product Manager</h1>
+<h2> {{message}} </h2>
+<ul>
+    <li><a href="{{ url_for('add_product') }}">Add Product</a></li>
+    <li><a href="{{ url_for('product_update_s1') }}">Update Product</a></li>
+    <li><a href="{{ url_for('product_delete') }}">Delete Product</a></li>
+    <li><a href="{{ url_for('search_product') }}">Search Product</a></li>
+    <li><a href="{{ url_for('manager') }}">Back To Admin Page</a></li>
+</ul>
+
+<form action="{{ url_for('search_productv2') }}" method="get">
+
+    <div class="form-group">
+        <input class="form-control" name="product_name" placeholder="Enter Product Name">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-danger">Search</button>
+    </div>
+</form>
+{% endblock %}

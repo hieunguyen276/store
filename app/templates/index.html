@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome to  Store
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome to  Store</h1>
+    {% with messages = get_flashed_messages() %} 
+    <h2> {{messages[0]}} </h2>
+    {% endwith %}
+
+{% endblock %}

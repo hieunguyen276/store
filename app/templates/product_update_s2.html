@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        UPDATE PRODUCT INFO
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>UPDATE PRODUCT INFO</h1>
+    <form action="{{ url_for('product_update_result')}}" method="get">
+        <input type="number" value="{{product.id}}" name="productId"><br>
+        <input type="text" value="{{product.product_id}}" name="product_id" placeholder="Product ID"><br>
+        <input type="text" value="{{product.product_name}}" name="product_name" placeholder="Product Name"><br>
+        <input type="text" value="{{product.product_type}}" name="product_type" placeholder="Product Type"><br>
+        <input type="text" value="{{product.unit_price}}" name="unit_price" placeholder="Unit Price"><br>
+        <input type="text" value="{{product.amount}}" name="amount" placeholder="Amount"><br>
+        <input type="text" value="{{product.id_supplier}}" name="id_supplier" placeholder="Supplier ID"><br>
+        <button class="btn btn-primary">Update</button>
+    </form>
+</body>
+
+</html>

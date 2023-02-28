@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Supplier Update
+{% endblock %}
+
+{% block body %}
+    <h1>Supplier manager</h1>
+    {% with messages = get_flashed_messages() %} 
+    <h2> {{messages[0]}} </h2>
+    {% endwith %}
+    <ul>
+        <li><a href="{{ url_for('add_supplier') }}">Add Supplier</a></li>
+        <li><a href="{{ url_for('supplier_update_s1') }}">Update Supplier</a></li>
+        <li><a href="{{ url_for('supplier_delete_s1') }}">Delete Supplier</a></li>
+        <li><a href="{{ url_for('search_supplier') }}">Search Supplier</a></li>
+        <li><a href="{{ url_for('manager') }}">Back To Admin Page</a></li>
+    </ul>
+    <h2>Select to update</h2>
+    <ul>
+        {% for supplier in supplier %}
+            <li>
+                <a href="{{ url_for('supplier_update_s2', supplier_id=supplier.id) }}">
+                    {{ supplier.supplier_id }} -- {{ supplier.supplier_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
